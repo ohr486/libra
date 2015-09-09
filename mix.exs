@@ -5,6 +5,7 @@ defmodule Libra.Mixfile do
     [app: :libra,
      version: "0.0.1",
      elixir: "~> 1.0",
+     elixirc_paths: ["lib", "web"],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -14,7 +15,10 @@ defmodule Libra.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [
+      mod: {Libra, []},
+      applications: [:logger]
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +31,12 @@ defmodule Libra.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:plug, "~> 1.0"},
+      {:cowboy, "~> 1.0"},
+      #{:exometer_core, github: "PSPDFKit-labs/exometer_core", override: true},
+      #{:exometer, github: "PSPDFKit-labs/exometer"},
+      #{:edown, github: "uwiger/edown", tag: "0.7", override: true},
+    ]
   end
 end
