@@ -3,13 +3,11 @@ defmodule Libra.ScanPlug do
   """
 
   @behaviour Plug
-  @allowed_methods ~w(GET HEAD)
 
-  import Plug.Conn
+  import Plug.Conn, only: [register_before_send: 2]
   alias Plug.Conn
 
-  def init(opts) do
-  end
+  def init(opts), do: opts
 
   def call(conn, opts) do
     before_time = :os.timestamp()
@@ -19,12 +17,9 @@ defmodule Libra.ScanPlug do
       after_time = :os.timestamp()
       diff = :timer.now_diff(after_time, before_time)
 
-      IO.puts "----------------"
-      IO.inspect conn_x.method
-      IO.inspect conn_x.request_path
-      IO.inspect conn_x.status
-      IO.inspect diff
-      IO.puts "----------------"
+      Libra.Histogram.add([:resp_time, conn_x.request_path], diff)
+      Libra.Counter.inc([:resp_count, conn_x.request_path])
+      Libra.Counter.inc([:total_resp_count])
 
       conn_x
     end)

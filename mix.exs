@@ -17,7 +17,7 @@ defmodule Libra.Mixfile do
   def application do
     [
       mod: {Libra, []},
-      applications: [:logger]
+      applications: [:logger, :exometer]
     ]
   end
 
@@ -34,9 +34,9 @@ defmodule Libra.Mixfile do
     [
       {:plug, "~> 1.0"},
       {:cowboy, "~> 1.0"},
-      #{:exometer_core, github: "PSPDFKit-labs/exometer_core", override: true},
-      #{:exometer, github: "PSPDFKit-labs/exometer"},
-      #{:edown, github: "uwiger/edown", tag: "0.7", override: true},
+      {:exometer_core, github: "PSPDFKit-labs/exometer_core", override: true},
+      {:exometer, github: "PSPDFKit-labs/exometer"},
+      {:edown, github: "uwiger/edown", tag: "0.7", override: true},
     ]
   end
 end

@@ -10,7 +10,9 @@ defmodule Libra.Supervisor do
   end
 
   def init({opts}) do
-    children = [worker(Libra.Manager, [opts])]
+    children = [
+      worker(Libra.Manager, [opts])
+    ]
     supervise(children, strategy: :one_for_one, max_restarts: 500, max_second: 5)
   end
 end
