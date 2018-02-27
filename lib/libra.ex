@@ -1,9 +1,18 @@
 defmodule Libra do
-  use Application
+  @moduledoc """
+  Documentation for Libra.
+  """
 
-  # OTP application
-  def start(_type, _args) do
-    Libra.Supervisor.start_link
+  @doc """
+  Hello world.
+
+  ## Examples
+
+      iex> Libra.hello
+      :world
+
+  """
+  def hello do
+    :world
   end
-
 end

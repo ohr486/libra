@@ -1,7 +1,8 @@
 defmodule LibraTest do
   use ExUnit.Case
+  doctest Libra
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "greets the world" do
+    assert Libra.hello() == :world
   end
 end
