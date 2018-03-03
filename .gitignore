@@ -22,5 +22,9 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 libra-*.tar
 
+# for editor
+*~
+*.swp
+
 # for Mac
 .DS_Store
