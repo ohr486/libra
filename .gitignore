@@ -7,6 +7,9 @@ erl_crash.dump
 *.ez
 libra-*.tar
 
+# for IDE
+.idel
+
 # for editor
 *~
 *.swp
